@@ -1,0 +1,73 @@
+openapi: 3.0.1
+info:
+  title: Product API
+  description: Pactflow Product API demo
+  version: 1.0.0
+paths:
+  /products:
+    get:
+      summary: List all products
+      description: Returns all products
+      operationId: getAllProducts
+      responses:
+        "200":
+          description: successful operation
+          content:
+            "application/json; charset=utf-8":
+              schema:
+                type: "array"
+                items:
+                  $ref: '#/components/schemas/Product'
+        "400":
+          description: Invalid ID supplied
+          content: {}
+        "404":
+          description: Product not found
+          content: {}
+  /products/{id}:
+    get:
+      summary: Find product by ID
+      description: Returns a single product
+      operationId: getProductByID
+      parameters:
+      - name: id
+        in: path
+        description: ID of product to get
+        schema:
+          type: string
+        required: true
+        example: 10
+      responses:
+        "200":
+          description: successful operation
+          content:
+            "application/json; charset=utf-8":
+              schema:
+                $ref: '#/components/schemas/Product'
+        "400":
+          description: Invalid ID supplied
+          content: {}
+        "404":
+          description: Product not found
+          content: {}
+components:
+  schemas:
+    Product:
+      type: object
+      # additionalProperties: false # WARNING! without this, a consumer can add stuff that doesn't exist! See also https://bitbucket.org/atlassian/swagger-mock-validator/issues/84/test-incorrectly-passes-when-mock-expects
+      properties:
+        id:
+          type: string
+          example: "1234"
+        type:
+          type: string
+          example: "food"
+        name:
+          type: string
+          example: "pizza"
+        version:
+          type: string
+          example: "1.0.0"
+        price:
+          type: number
+          example: 42
