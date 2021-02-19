@@ -18,13 +18,19 @@ paths:
                 type: "array"
                 items:
                   $ref: '#/components/schemas/Product'
+              examples:
+                application/json:
+                  value:
+                    - id: "1234"
+                      type: "food"
+                      price: 42
+                      # name: "pizza"
+                      # version: "1.0.0"
+                      # see https://github.com/apiaryio/dredd/issues/1430 for why
         "400":
           description: Invalid ID supplied
           content: {}
-        "404":
-          description: Product not found
-          content: {}
-  /products/{id}:
+  /product/{id}:
     get:
       summary: Find product by ID
       description: Returns a single product
@@ -44,6 +50,15 @@ paths:
             "application/json; charset=utf-8":
               schema:
                 $ref: '#/components/schemas/Product'
+              examples:
+                application/json:
+                  value:
+                    id: "1234"
+                    type: "food"
+                    price: 42
+                    # name: "pizza"
+                    # version: "1.0.0"
+                    # see https://github.com/apiaryio/dredd/issues/1430 for why
         "400":
           description: Invalid ID supplied
           content: {}
@@ -54,20 +69,19 @@ components:
   schemas:
     Product:
       type: object
-      # additionalProperties: false # WARNING! without this, a consumer can add stuff that doesn't exist! See also https://bitbucket.org/atlassian/swagger-mock-validator/issues/84/test-incorrectly-passes-when-mock-expects
+      required:
+        - id
+        - name
+        - price
+      additionalProperties: false # WARNING! without this, a consumer can add stuff that doesn't exist! See also https://bitbucket.org/atlassian/swagger-mock-validator/issues/84/test-incorrectly-passes-when-mock-expects
       properties:
         id:
           type: string
-          example: "1234"
         type:
           type: string
-          example: "food"
         name:
           type: string
-          example: "pizza"
         version:
           type: string
-          example: "1.0.0"
         price:
           type: number
-          example: 42
