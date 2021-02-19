@@ -14,11 +14,11 @@ In the following diagram, you can see how the provider testing process works. St
 
 When we call "can-i-deploy" the cross-contract validation process kicks off on Pactflow, to ensure any consumer consumes a valid subset of the OAS for the provider.
 
-![Provider Test[(docs/provider-scope.png "Provider Test")
+![Provider Test](docs/provider-scope.png "Provider Test")
 
 When you run the CI pipeline (see below for doing this), the pipeline should perform the following activities (simplified):
 
-![Provider Pipeline[(docs/provider-pipeline.png "Provider Pipeline")
+![Provider Pipeline](docs/provider-pipeline.png "Provider Pipeline")
 
 ## Pre-requisites
 
