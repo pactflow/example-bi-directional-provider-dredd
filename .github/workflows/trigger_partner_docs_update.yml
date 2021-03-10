@@ -11,10 +11,17 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger update
-        if: github.repository == 'pactflow/example-collaborative-contracts-provider'
+      - name: Trigger docs.pactflow.io update
+        if: github.repository == 'pactflow/example-bi-directional-contracts-provider'
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.GHTOKENFORTRIGGERINGPACTDOCSUPDATE }}
+          repository: pactflow/docs.pactflow.io
+          event-type: pactflow-example-bi-directional-contracts-provider-updated
+      - name: Trigger partners.pactflow.io update
+        if: github.repository == 'pactflow/example-bi-directional-contracts-provider'
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.GHTOKENFORTRIGGERINGPACTDOCSUPDATE }}
           repository: pactflow/partners.pactflow.io
-          event-type: pactflow-example-collaborative-contracts-provider-updated
+          event-type: pactflow-example-bi-directional-contracts-provider-updated
