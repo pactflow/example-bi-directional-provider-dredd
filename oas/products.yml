@@ -5,6 +5,37 @@ info:
   version: 1.0.0
 paths:
   /products:
+    post:
+      summary: Create a product
+      description: Creates a new product
+      operationId: createProduct
+      requestBody:
+        description: Create a new Product
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+            examples:
+              application/json:
+                value:
+                  id: "1234"
+                  type: "food"
+                  price: 42
+      responses:
+        "200":
+          description: successful operation
+          content:
+            "application/json; charset=utf-8":
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/Product'
+              examples:
+                application/json:
+                  value:
+                    id: "1234"
+                    type: "food"
+                    price: 42
     get:
       summary: List all products
       description: Returns all products
