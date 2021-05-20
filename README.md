@@ -1,4 +1,4 @@
-# Example Provider
+# Example Dredd Provider
 
 [![Build Status](https://travis-ci.com/pactflow/example-pactflow-example-provider-dredd.svg?branch=master)](https://travis-ci.com/pactflow/example-pactflow-example-provider-dredd)
 
