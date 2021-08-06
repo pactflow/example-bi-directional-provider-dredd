@@ -29,7 +29,7 @@ axios({
   },
   url:
     process.env.PACT_BROKER_BASE_URL +
-    `/contracts/provider/pactflow-example-provider-dredd/version/${process.env.TRAVIS_COMMIT}`,
+    `/contracts/provider/pactflow-example-provider-dredd/version/${process.env.GIT_COMMIT}`,
   data: result,
 })
   .then(() => {
