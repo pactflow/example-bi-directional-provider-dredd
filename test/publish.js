@@ -37,4 +37,5 @@ axios({
   })
   .catch((error) => {
     console.log("error publishing contract + results", error);
+    process.exit(1);
   });
