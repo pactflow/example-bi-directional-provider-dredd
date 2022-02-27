@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "test": "dredd",
-    "test:publish": "node test/publish.js"
+    "test:publish": "node test/publish.js",
+    "publish": "node test/publish.js true"
   },
   "dependencies": {
     "cors": "^2.8.5",
