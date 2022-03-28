@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
 
-const oas = fs.readFileSync(path.join(__dirname, "../oas/products.yml"));
+const oas = fs.readFileSync(path.join(__dirname, `../oas/${process.env.OPEN_API_FILENAME}`));
 const report = fs.readFileSync(path.join(__dirname, "../output/report.md"));
 const success = process.argv[2];
 const version = process.argv[3] || process.env.GIT_COMMIT;
@@ -30,7 +30,7 @@ axios({
   },
   url:
     process.env.PACT_BROKER_BASE_URL +
-    `/contracts/provider/pactflow-example-provider-dredd/version/${version}`,
+    `/contracts/provider/${process.env.PACT_PROVIDER}/version/${version}`,
   data: result,
 })
   .then(() => {

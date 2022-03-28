@@ -123,3 +123,12 @@ test_pact_changed_webhook:
 
 .env:
 	touch .env
+
+publish_contract1: .env 
+	@echo "\n========== STAGE: publish contract + results (success) ==========\n"
+	OPEN_API_FILENAME=products.yml PACT_PROVIDER=FOO1 GIT_COMMIT=FOO1 npm run test:publish -- true
+
+
+publish_contract2: .env 
+	@echo "\n========== STAGE: publish contract + results (success) ==========\n"
+	OPEN_API_FILENAME=products2.yml PACT_PROVIDER=FOO2 GIT_COMMIT=FOO2 npm run test:publish -- true
