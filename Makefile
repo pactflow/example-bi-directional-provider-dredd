@@ -101,7 +101,7 @@ create_github_token_secret:
 	-d  "{\"name\":\"githubToken\",\"description\":\"Github token\",\"value\":\"${GITHUB_TOKEN}\"}"
 
 # NOTE: the github token secret must be created (either through the UI or using the
-# `create_travis_token_secret` target) before the webhook is invoked.
+# `create_github_token_secret` target) before the webhook is invoked.
 create_or_update_pact_changed_webhook:
 	"${PACT_CLI}" \
 	  broker create-or-update-webhook \
