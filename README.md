@@ -1,6 +1,6 @@
 # Example Dredd Provider
 
-[![Build Status](https://travis-ci.com/pactflow/example-pactflow-example-provider-dredd.svg?branch=master)](https://travis-ci.com/pactflow/example-pactflow-example-provider-dredd)
+[![Build Status](https://github.com/pactflow/example-provider-dredd/actions/workflows/build.yml/badge.svg)](https://github.com/pactflow/example-provider-dress/actions)
 
 This is an example "Product" API Provider, to demonstrate the new bi-directional contract capability of Pactflow (previously referred to as Provider driven contracts, or collaborative contracts). It:
 
@@ -8,7 +8,9 @@ This is an example "Product" API Provider, to demonstrate the new bi-directional
 * Has OAS 3.0 spec documenting the API
 * Uses Dredd for API testing to check spec compliance
 
-It is using a public tenant on Pactflow, which you can access [here](https://test.pact.dius.com.au) using the credentials `dXfltyFMgNOFZAxr8io9wJ37iUpY42M`/`O5AIZWxelWbLvqMd8PkAVycBJh2Psyg1`. The latest version of the Example Consumer/Example Provider pact is published [here](https://test.pact.dius.com.au/pacts/provider/pactflow-example-pactflow-example-provider-dredd/consumer/pactflow-example-consumer/latest).
+
+It is using a public tenant on Pactflow, which you can access [here](https://testdemo.pactflow.io/) using the credentials `dXfltyFMgNOFZAxr8io9wJ37iUpY42M`/`O5AIZWxelWbLvqMd8PkAVycBJh2Psyg1`. The latest version of the Example Pactflow Consumer/Example Pactflow Provider (Dredd) pact is published [here](https://testdemo.pactflow.io/overview/provider/pactflow-example-provider-dredd/consumer/pactflow-example-consumer).
+
 
 In the following diagram, you can see how the provider testing process works. Starting with our OAS, we use Dredd to verify that all
 
