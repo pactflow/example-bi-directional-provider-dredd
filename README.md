@@ -1,6 +1,6 @@
 # Example Dredd Provider
 
-[![Build Status](https://github.com/pactflow/example-provider-dredd/actions/workflows/build.yml/badge.svg)](https://github.com/pactflow/example-provider-dress/actions)
+[![Build Status](https://github.com/pactflow/example-provider-dredd/actions/workflows/build.yml/badge.svg)](https://github.com/pactflow/example-provider-dredd/actions)
 
 This is an example "Product" API Provider, to demonstrate the new bi-directional contract capability of Pactflow (previously referred to as Provider driven contracts, or collaborative contracts). It:
 
