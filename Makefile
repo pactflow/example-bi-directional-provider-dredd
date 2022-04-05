@@ -1,5 +1,5 @@
-PACTICIPANT := "pactflow-example-provider-dredd"
-GITHUB_REPO := "pactflow/pactflow-example-provider-dredd"
+PACTICIPANT := "pactflow-example-bi-directional-provider-dredd"
+GITHUB_REPO := "pactflow/pactflow-example-bi-directional-provider-dredd"
 PACT_CHANGED_WEBHOOK_UUID := "c76b601e-d66a-4eb1-88a4-6ebc50c0df8b"
 PACT_CLI="docker run --rm -v ${PWD}:${PWD} -e PACT_BROKER_BASE_URL -e PACT_BROKER_TOKEN pactfoundation/pact-cli:latest"
 

@@ -8,8 +8,8 @@
     "test": "dredd",
     "test:publish": "node test/publish.js",
     "publish": "node test/publish.js true \"$(npx @pact-foundation/absolute-version)\"",
-    "can-i-deploy": "pact-broker can-i-deploy --pacticipant pactflow-example-provider-dredd --version=\"$(npx @pact-foundation/absolute-version)\" --to-environment production",
-    "deploy": "pact-broker record-deployment --pacticipant pactflow-example-provider-dredd --version \"$(npx @pact-foundation/absolute-version)\" --environment production"
+    "can-i-deploy": "pact-broker can-i-deploy --pacticipant pactflow-example-bi-directional-provider-dredd --version=\"$(npx @pact-foundation/absolute-version)\" --to-environment production",
+    "deploy": "pact-broker record-deployment --pacticipant pactflow-example-bi-directional-provider-dredd --version \"$(npx @pact-foundation/absolute-version)\" --environment production"
   },
   "dependencies": {
     "cors": "^2.8.5",
