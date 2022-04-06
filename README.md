@@ -165,18 +165,16 @@ You can still try this example locally on Windows using powershell and running c
 
 </details>
 
-
 ## Caveats
 
-* You must ensure `additionalProperties` in your OAS is set to `false` on any response body, to ensure a consumer won't get false positives if they add a new field that isn't actually part of the spec (see
-https://bitbucket.org/atlassian/swagger-mock-validator/issues/84/test-incorrectly-passes-when-mock-expects for an interesting read on why this is necessary. TL;DR - it's JSON Schemas fault)
-*  you are responsible for ensuring sufficient OAS coverage. To highlight this point, in our example, we do _not_ test the 404 case on the provider, but the consumer has a pact for it and it's tests still pass! _NOTE: We plan to address this problem in the future_
-* _implementing_ a spec is not the same as being _compatible_ with a spec. Most tools only tell you that what you’re doing is _not incompatible_ with the spec. _NOTE: We plan to address this problem in the future_
-
-
+- [OAS considerations](https://docs.pactflow.io/docs/bi-directional-contract-testing/contracts/oas#considerations)
+-  you are responsible for ensuring sufficient OAS coverage. To highlight this point, in our example, we do _not_ test the 404 case on the provider, but the consumer has a pact for it and it's tests still pass! _NOTE: We plan to address this problem in the future_
+- _implementing_ a spec is not the same as being _compatible_ with a spec. Most tools only tell you that what you’re doing is _not incompatible_ with the spec. _NOTE: We plan to address this problem in the future_
+  
 ## Related topics / posts / discussions
 
-- TBC
+- [Consumer Side Bi-Directional Contract Testing Guide](https://docs.pactflow.io/docs/bi-directional-contract-testing/consumer)
+- [Provider Side Bi-Directional Contract Testing Guide](https://docs.pactflow.io/docs/bi-directional-contract-testing/provider)
 
 ## Other examples of how to do this form of testing
 
