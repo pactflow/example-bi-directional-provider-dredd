@@ -30,7 +30,7 @@ axios({
   },
   url:
     process.env.PACT_BROKER_BASE_URL +
-    `/contracts/provider/pactflow-example-provider-dredd/version/${version}`,
+    `/contracts/provider/pactflow-example-bi-directional-provider-dredd/version/${version}`,
   data: result,
 })
   .then(() => {
