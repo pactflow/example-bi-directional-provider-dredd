@@ -4,7 +4,7 @@
   "description": "Collaborative contracts example, using Dredd and OAS to validate the provider API",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start:server": "node server.js",
     "test": "dredd",
     "test:publish": "node test/publish.js",
     "publish": "node test/publish.js true \"$(npx @pact-foundation/absolute-version)\"",
