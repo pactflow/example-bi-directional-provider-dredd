@@ -3,8 +3,8 @@ dry-run: null
 hookfiles: ./test/hooks.js
 language: nodejs
 require: null
-server: npm start
-server-wait: 3
+server: null
+server-wait: null
 init: false
 custom: {}
 names: false
