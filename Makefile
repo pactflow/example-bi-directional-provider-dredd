@@ -32,11 +32,11 @@ create_version_tag:
 
 publish_success: .env create_branch_version create_version_tag
 	@echo "\n========== STAGE: publish contract + results (success) ==========\n"
-	npm run test:publish -- true
+	npm run test:publish -- true ${GIT_BRANCH}
 
 publish_failure: .env create_branch_version create_version_tag
 	@echo "\n========== STAGE: publish contract + results (failure) ==========\n"
-	npm run test:publish -- false
+	npm run test:publish -- false ${GIT_BRANCH}
 
 # Run the ci target from a developer machine with the environment variables
 # set as if it was on Github Actions.
