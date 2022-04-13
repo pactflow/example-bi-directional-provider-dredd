@@ -69,14 +69,14 @@ no_deploy:
 
 can_i_deploy: .env
 	@echo "\n========== STAGE: can-i-deploy? 🌉 ==========\n"
-	"${PACT_CLI}" broker can-i-deploy --pacticipant ${PACTICIPANT} --version ${GIT_COMMIT} --to-environment production
+	"${PACT_CLI}" broker can-i-deploy --pacticipant ${PACTICIPANT} --version ${GIT_COMMIT} --to-environment development
 
 deploy_app:
 	@echo "\n========== STAGE: deploy 🚀 ==========\n"
 	@echo "Deploying to prod"
 
 record_deployment: .env
-	@"${PACT_CLI}" broker record_deployment --pacticipant ${PACTICIPANT} --version ${GIT_COMMIT} --environment production
+	@"${PACT_CLI}" broker record_deployment --pacticipant ${PACTICIPANT} --version ${GIT_COMMIT} --environment development
 
 ## =====================
 ## Pactflow set up tasks
