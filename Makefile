@@ -1,7 +1,7 @@
 PACTICIPANT := "pactflow-example-bi-directional-provider-dredd"
 GITHUB_REPO := "pactflow/pactflow-example-bi-directional-provider-dredd"
 PACT_CLI="docker run --rm -v ${PWD}:${PWD} -e PACT_BROKER_BASE_URL -e PACT_BROKER_TOKEN pactfoundation/pact-cli:latest"
-GIT_COMMIT:= $(shell git rev-parse --abbrev-ref)
+GIT_COMMIT:= $(shell git rev-parse HEAD)
 GIT_BRANCH:= $(shell git rev-parse --abbrev-ref HEAD)
 
 # Only deploy from master
@@ -33,11 +33,11 @@ create_branch_version:
 
 publish_success: .env create_branch_version 
 	@echo "\n========== STAGE: publish contract + results (success) ==========\n"
-	npm run test:publish -- true
+	npm run test:publish -- true ${GIT_COMMIT}
 
 publish_failure: .env create_branch_version 
 	@echo "\n========== STAGE: publish contract + results (failure) ==========\n"
-	npm run test:publish -- false
+	npm run test:publish -- false ${GIT_COMMIT}
 
 # Run the ci target from a developer machine with the environment variables
 # set as if it was on Github Actions.
