@@ -30,11 +30,11 @@ create_branch_version:
 create_version_tag:
 	PACTICIPANT=${PACTICIPANT} ./scripts/create_version_tag.sh
 
-publish_success: .env create_branch_version create_version_tag
+publish_success: .env create_branch_version 
 	@echo "\n========== STAGE: publish contract + results (success) ==========\n"
 	npm run test:publish -- true
 
-publish_failure: .env create_branch_version create_version_tag
+publish_failure: .env create_branch_version 
 	@echo "\n========== STAGE: publish contract + results (failure) ==========\n"
 	npm run test:publish -- false
 
