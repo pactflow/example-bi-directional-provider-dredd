@@ -1,7 +1,7 @@
 PACTICIPANT := "pactflow-example-bi-directional-provider-dredd"
 GITHUB_REPO := "pactflow/pactflow-example-bi-directional-provider-dredd"
 PACT_CLI="docker run --rm -v ${PWD}:${PWD} -e PACT_BROKER_BASE_URL -e PACT_BROKER_TOKEN pactfoundation/pact-cli:latest"
-GIT_COMMIT:= $(shell rev-parse --abbrev-ref)
+GIT_COMMIT:= $(shell git rev-parse --abbrev-ref)
 GIT_BRANCH:= $(shell git rev-parse --abbrev-ref HEAD)
 
 # Only deploy from master
