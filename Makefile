@@ -1,12 +1,16 @@
 PACTICIPANT := "pactflow-example-bi-directional-provider-dredd"
 GITHUB_REPO := "pactflow/pactflow-example-bi-directional-provider-dredd"
 PACT_CLI="docker run --rm -v ${PWD}:${PWD} -e PACT_BROKER_BASE_URL -e PACT_BROKER_TOKEN pactfoundation/pact-cli:latest"
-GIT_COMMIT:= $(shell git rev-parse HEAD)
+GIT_COMMIT:= $(shell rev-parse --abbrev-ref)
 GIT_BRANCH:= $(shell git rev-parse --abbrev-ref HEAD)
 
 # Only deploy from master
 ifeq ($(GIT_BRANCH), master)
 	DEPLOY_TARGET=deploy
+	DEPLOY_ENV=production
+else ifeq ($(GIT_BRANCH), dev)
+	DEPLOY_TARGET=deploy
+	DEPLOY_ENV=development
 else
 	DEPLOY_TARGET=no_deploy
 endif
@@ -69,14 +73,14 @@ no_deploy:
 
 can_i_deploy: .env
 	@echo "\n========== STAGE: can-i-deploy? 🌉 ==========\n"
-	"${PACT_CLI}" broker can-i-deploy --pacticipant ${PACTICIPANT} --version ${GIT_COMMIT} --to-environment production
+	"${PACT_CLI}" broker can-i-deploy --pacticipant ${PACTICIPANT} --version ${GIT_COMMIT} --to-environment ${DEPLOY_ENV}
 
 deploy_app:
 	@echo "\n========== STAGE: deploy 🚀 ==========\n"
 	@echo "Deploying to prod"
 
 record_deployment: .env
-	@"${PACT_CLI}" broker record_deployment --pacticipant ${PACTICIPANT} --version ${GIT_COMMIT} --environment production
+	@"${PACT_CLI}" broker record_deployment --pacticipant ${PACTICIPANT} --version ${GIT_COMMIT} --environment ${DEPLOY_ENV}
 
 ## =====================
 ## Pactflow set up tasks
