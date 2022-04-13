@@ -21,6 +21,11 @@ const result = {
 
 console.log("Publishing OAS + results to Pactflow", result);
 
+print("TROLL TESTING")
+print(`${version}`)
+print(`${process.env.PACT_BROKER_BASE_URL}`)
+print("END TROLL TESTING")
+
 // Upload the contract + results together
 axios({
   method: "PUT",
