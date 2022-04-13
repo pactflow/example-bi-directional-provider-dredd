@@ -21,7 +21,7 @@ paths:
                 value:
                   id: "1234"
                   type: "food"
-                  price: "42"
+                  price: 42
       responses:
         "200":
           description: successful operation
@@ -35,7 +35,7 @@ paths:
                   value:
                     id: "1234"
                     type: "food"
-                    price: "42"
+                    price: 42
     get:
       summary: List all products
       description: Returns all products
@@ -115,4 +115,4 @@ components:
         version:
           type: string
         price:
-          type: string
+          type: number
