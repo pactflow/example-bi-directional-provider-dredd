@@ -6,7 +6,6 @@ const oas = fs.readFileSync(path.join(__dirname, "../oas/products.yml"));
 const report = fs.readFileSync(path.join(__dirname, "../output/report.md"));
 const success = process.argv[2];
 const version = process.argv[3] || process.env.GIT_COMMIT;
-const branch = process.argv[4] || process.env.GIT_BRANCH;
 
 const result = {
   content: Buffer.from(oas, "utf-8").toString("base64"),
