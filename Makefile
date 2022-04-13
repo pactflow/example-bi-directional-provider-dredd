@@ -27,9 +27,6 @@ ci:
 create_branch_version:
 	PACTICIPANT=${PACTICIPANT} GIT_BRANCH=${GIT_BRANCH} GIT_COMMIT=${GIT_COMMIT} ./scripts/create_branch_version.sh
 
-create_version_tag:
-	PACTICIPANT=${PACTICIPANT} ./scripts/create_version_tag.sh
-
 publish_success: .env create_branch_version 
 	@echo "\n========== STAGE: publish contract + results (success) ==========\n"
 	npm run test:publish -- true
