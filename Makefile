@@ -50,9 +50,10 @@ fake_ci: .env
 	@CI=true \
 	PACT_BROKER_PUBLISH_VERIFICATION_RESULTS=true \
 	make ci; 
+	make can_i_deploy
 	make deploy_target
 
-deploy_target: can_i_deploy $(DEPLOY_TARGET)
+deploy_target: $(DEPLOY_TARGET)
 
 ## =====================
 ## Build/test tasks
