@@ -1,11 +1,11 @@
 PACTICIPANT := "pactflow-example-bi-directional-provider-dredd"
 GITHUB_REPO := "pactflow/pactflow-example-bi-directional-provider-dredd"
 PACT_CLI="docker run --rm -v ${PWD}:${PWD} -e PACT_BROKER_BASE_URL -e PACT_BROKER_TOKEN pactfoundation/pact-cli:latest"
-GIT_COMMIT:=$(shell git rev-parse HEAD)
-GIT_BRANCH:=$(shell git rev-parse --abbrev-ref HEAD) 
+GIT_COMMIT:= "$(shell git rev-parse HEAD)"
+GIT_BRANCH:= "$(shell git rev-parse --abbrev-ref HEAD)"
 
 # Only deploy from master
-ifeq ($(GIT_BRANCH),master)
+ifeq ($(GIT_BRANCH), "master")
 	DEPLOY_TARGET=deploy
 else
 	DEPLOY_TARGET=no_deploy
@@ -25,23 +25,27 @@ ci:
 	fi; \
 
 create_branch_version:
-	PACTICIPANT=${PACTICIPANT} ./scripts/create_branch_version.sh
+	PACTICIPANT=${PACTICIPANT} GIT_BRANCH=${GIT_BRANCH} GIT_COMMIT=${GIT_COMMIT} ./scripts/create_branch_version.sh
 
 create_version_tag:
 	PACTICIPANT=${PACTICIPANT} ./scripts/create_version_tag.sh
 
 publish_success: .env create_branch_version create_version_tag
 	@echo "\n========== STAGE: publish contract + results (success) ==========\n"
-	npm run test:publish -- true ${GIT_BRANCH}
+	npm run test:publish -- true
 
 publish_failure: .env create_branch_version create_version_tag
 	@echo "\n========== STAGE: publish contract + results (failure) ==========\n"
-	npm run test:publish -- false ${GIT_BRANCH}
+	npm run test:publish -- false
 
 # Run the ci target from a developer machine with the environment variables
 # set as if it was on Github Actions.
 # Use this for quick feedback when playing around with your workflows.
 fake_ci: .env
+	@echo "TEST VARIABLES BELOW"
+	@echo ${GIT_BRANCH}
+	@echo ${GIT_COMMIT}
+	@echo ${DEPLOY_TARGET}
 	@CI=true \
 	PACT_BROKER_PUBLISH_VERIFICATION_RESULTS=true \
 	make ci; 

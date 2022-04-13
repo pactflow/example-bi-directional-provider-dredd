@@ -18,7 +18,6 @@ const result = {
     contentType: "text/plain",
     verifier: "verifier",
   },
-  branch: branch
 };
 
 console.log("Publishing OAS + results to Pactflow", result);

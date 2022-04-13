@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "==> Creating version tag for ${PACTICIPANT}"
+echo "==> Creating version tag for ${PACTICIPANT}... ${GIT_BRANCH}, ${GIT_COMMIT}, ${PACT_BROKER_TOKEN} to ${PACT_BROKER_BASE_URL}"
 curl \
   -X PUT \
   -H "Authorization: Bearer ${PACT_BROKER_TOKEN}" \
