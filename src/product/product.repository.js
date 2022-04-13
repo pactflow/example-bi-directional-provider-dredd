@@ -21,6 +21,10 @@ class ProductRepository {
     async create(product) {
         return this.products.set(product.id, product)
     }
+
+    async deleteById(id){
+        return this.products.delete(id)
+    }
 }
 
 module.exports = ProductRepository;

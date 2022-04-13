@@ -55,13 +55,39 @@ paths:
                     - id: "1234"
                       type: "food"
                       price: 42
-                      # name: "pizza"
-                      # version: "1.0.0"
-                      # see https://github.com/apiaryio/dredd/issues/1430 for why
         "400":
           description: Invalid ID supplied
           content: {}
   /product/{id}:
+    delete:
+      summary: Delete product by ID
+      description: Deletes a product
+      operationId: deleteProductByID
+      parameters:
+      - name: id
+        in: path
+        description: ID of product to delete
+        schema:
+          type: string
+        required: true
+        example: 11
+      responses:
+        "200":
+          description: successful operation
+          content:
+            "application/json; charset=utf-8":
+              schema:
+                $ref: '#/components/schemas/Product'
+              examples:
+                application/json:
+                  value:
+                    true
+        "400":
+          description: Invalid ID supplied
+          content: {}
+        "404":
+          description: Product not found
+          content: {}
     get:
       summary: Find product by ID
       description: Returns a single product
