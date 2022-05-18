@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dredd": "dredd",
-    "test": "./node_modules/.bin/concurrently -k -s \"first\" \"npm start\" \"sleep 3 && ./node_modules/.bin/dredd\"",
+    "test": "concurrently -k -s \"first\" \"npm start\" \"sleep 3 && npm run dredd\"",
     "test:publish": "node test/publish.js",
     "publish": "node test/publish.js true \"$(npx @pact-foundation/absolute-version)\"",
     "can-i-deploy": "pact-broker can-i-deploy --pacticipant pactflow-example-bi-directional-provider-dredd --version=\"$(npx @pact-foundation/absolute-version)\" --to-environment production",
