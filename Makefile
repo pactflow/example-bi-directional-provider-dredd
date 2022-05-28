@@ -6,7 +6,7 @@ PACT_CLI_DOCKER_VERSION?=latest
 ## Pactflow Provider Publishing
 ## ====================
 PACT_CLI="docker run --rm -v ${PWD}:/app -w "/app" -e PACT_BROKER_BASE_URL -e PACT_BROKER_TOKEN pactfoundation/pact-cli:${PACT_CLI_DOCKER_VERSION}"
-OAS_FILE_PATH?=oas/swagger.yml
+OAS_FILE_PATH?=oas/products.yml
 REPORT_FILE_PATH?=output/report.md
 REPORT_FILE_CONTENT_TYPE?=text/plain
 VERIFIER_TOOL?=dredd
