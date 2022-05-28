@@ -1,6 +1,15 @@
-PACTICIPANT := "pactflow-example-bi-directional-provider-dredd"
+PACTICIPANT ?= "pactflow-example-bi-directional-provider-dredd"
 GITHUB_REPO := "pactflow/pactflow-example-bi-directional-provider-dredd"
-PACT_CLI="docker run --rm -v ${PWD}:${PWD} -e PACT_BROKER_BASE_URL -e PACT_BROKER_TOKEN pactfoundation/pact-cli:latest"
+PACT_CLI_DOCKER_VERSION?=latest
+
+## ====================
+## Pactflow Provider Publishing
+## ====================
+PACT_CLI="docker run --rm -v ${PWD}:/app -w "/app" -e PACT_BROKER_BASE_URL -e PACT_BROKER_TOKEN pactfoundation/pact-cli:${PACT_CLI_DOCKER_VERSION}"
+OAS_FILE_PATH?=oas/swagger.yml
+REPORT_FILE_PATH?=output/report.md
+REPORT_FILE_CONTENT_TYPE?=text/plain
+VERIFIER_TOOL?=dredd
 
 # Only deploy from master
 ifeq ($(GIT_BRANCH),master)
@@ -22,19 +31,33 @@ ci:
 		make publish_failure; \
 	fi; \
 
-create_branch_version:
-	PACTICIPANT=${PACTICIPANT} ./scripts/create_branch_version.sh
+publish_success: .env
+	@echo "\n========== STAGE: publish provider contract (spec + results) - success ==========\n"
+	PACTICIPANT=${PACTICIPANT} \
+	"${PACT_CLI}" pactflow publish-provider-contract \
+      /app/${OAS_FILE_PATH} \
+      --provider ${PACTICIPANT} \
+      --provider-app-version ${GIT_COMMIT} \
+      --branch ${GIT_BRANCH} \
+      --content-type application/yaml \
+      --verification-exit-code=0 \
+      --verification-results /app/${REPORT_FILE_PATH} \
+      --verification-results-content-type ${REPORT_FILE_CONTENT_TYPE}\
+      --verifier ${VERIFIER_TOOL}
 
-create_version_tag:
-	PACTICIPANT=${PACTICIPANT} ./scripts/create_version_tag.sh
-
-publish_success: .env create_branch_version create_version_tag
-	@echo "\n========== STAGE: publish contract + results (success) ==========\n"
-	npm run test:publish -- true
-
-publish_failure: .env create_branch_version create_version_tag
-	@echo "\n========== STAGE: publish contract + results (failure) ==========\n"
-	npm run test:publish -- false
+publish_failure: .env
+	@echo "\n========== STAGE:  publish provider contract (spec + results) - failure  ==========\n"
+	PACTICIPANT=${PACTICIPANT} \
+	"${PACT_CLI}" pactflow publish-provider-contract \
+      /app/${OAS_FILE_PATH} \
+      --provider ${PACTICIPANT} \
+      --provider-app-version ${GIT_COMMIT} \
+      --branch ${GIT_BRANCH} \
+      --content-type application/yaml \
+      --verification-exit-code=1 \
+      --verification-results ${REPORT_FILE_PATH} \
+      --verification-results-content-type ${REPORT_FILE_CONTENT_TYPE}\
+      --verifier ${VERIFIER_TOOL}
 
 # Run the ci target from a developer machine with the environment variables
 # set as if it was on Github Actions.
