@@ -102,7 +102,7 @@ components:
       type: object
       required:
         - id
-        - name
+        # - name
         - price
       additionalProperties: false # WARNING! without this, a consumer can add stuff that doesn't exist! See also https://bitbucket.org/atlassian/swagger-mock-validator/issues/84/test-incorrectly-passes-when-mock-expects
       properties:
@@ -110,8 +110,8 @@ components:
           type: string
         type:
           type: string
-        name:
-          type: string
+        # name:
+        #   type: string
         version:
           type: string
         price:
