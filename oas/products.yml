@@ -28,8 +28,7 @@ paths:
           content:
             "application/json; charset=utf-8":
               schema:
-                oneOf:
-                  - $ref: '#/components/schemas/Product'
+                  $ref: '#/components/schemas/Product'
               examples:
                 application/json:
                   value:
@@ -104,7 +103,6 @@ components:
         - id
         - name
         - price
-      additionalProperties: false # WARNING! without this, a consumer can add stuff that doesn't exist! See also https://bitbucket.org/atlassian/swagger-mock-validator/issues/84/test-incorrectly-passes-when-mock-expects
       properties:
         id:
           type: string
