@@ -28,8 +28,7 @@ paths:
           content:
             "application/json; charset=utf-8":
               schema:
-                oneOf:
-                  - $ref: '#/components/schemas/Product'
+                  $ref: '#/components/schemas/Product'
               examples:
                 application/json:
                   value:
