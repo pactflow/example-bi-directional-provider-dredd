@@ -7,8 +7,8 @@
     "start": "node server.js",
     "dredd": "dredd",
     "test": "concurrently -k -s \"first\" \"npm start\" \"sleep 3 && npm run dredd\"",
-    "test:publish": "node test/publish.js",
-    "publish": "node test/publish.js true \"$(npx @pact-foundation/absolute-version)\"",
+    "test:publish": "npm run publish",
+    "publish": "pactflow publish-provider-contract oas/products.yml --provider pactflow-example-bi-directional-provider-dredd --provider-app-version $(git rev-parse --abbrev-ref HEAD) --branch $(npx -y absolute-version) --content-type application/yaml --verification-exit-code=0 --verification-results output/report.md --verification-results-content-type \"text/plain\" --verifier dredd",
     "can-i-deploy": "pact-broker can-i-deploy --pacticipant pactflow-example-bi-directional-provider-dredd --version=\"$(npx @pact-foundation/absolute-version)\" --to-environment production",
     "deploy": "pact-broker record-deployment --pacticipant pactflow-example-bi-directional-provider-dredd --version \"$(npx @pact-foundation/absolute-version)\" --environment production"
   },
