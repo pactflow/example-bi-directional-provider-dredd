@@ -62,8 +62,7 @@ When you run the CI pipeline (see below for doing this), the pipeline should per
 
 - Test
   - Run tests to check spec compliance with openAPI spec
-  - Create branch tag via Pact CLI
-  - Publish openAPI spec, along with a version with the name of the current branch
+  - Publish provider contract (openAPI spec + results) to Pactflow
   - Check if we are safe to deploy to Production with `can-i-deploy` (ie. has the cross-contract validation has been successfully performed)
 - Deploy (only from master)
   - Deploy app to Production
