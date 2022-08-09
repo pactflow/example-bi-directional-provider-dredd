@@ -17,7 +17,7 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
-    "@pact-foundation/pact-core": "^13.4.1-beta.18",
+    "@pact-foundation/pact-core": "^13.7.1",
     "axios": "^0.21.1",
     "concurrently": "^7.1.0",
     "dotenv": "^8.2.0",
