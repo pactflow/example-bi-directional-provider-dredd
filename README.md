@@ -28,13 +28,13 @@
 
 <!-- Provider Overview -->
 
-This is an example of a NodeJS "Product" API Provider that uses Dredd, Pact, [Pactflow](https://pactflow.io) and GitHub Actions to generate and publish Pact provider contracts.
+This is an example of a NodeJS "Product" API Provider that uses Dredd, Pact, [PactFlow](https://pactflow.io) and GitHub Actions to generate and publish Pact provider contracts.
 
-It performs pre-deployment cross-compatability checks to ensure that it is compatible with specified consumers using the Bi-Directional contract capability of Pactflow.
+It performs pre-deployment cross-compatability checks to ensure that it is compatible with specified consumers using the Bi-Directional contract capability of PactFlow.
 
 <!-- General -->
 
-See the full [Pactflow Bi-Directional Workshop](https://docs.pactflow.io/docs/workshops/bi-directional-contract-testing) for which this can be substituted in as the "provider".
+See the full [PactFlow Bi-Directional Workshop](https://docs.pactflow.io/docs/workshops/bi-directional-contract-testing) for which this can be substituted in as the "provider".
 
 ### Key points
 
@@ -44,7 +44,7 @@ It:
 - Has OAS 3.0 spec documenting the API
 - Uses Dredd for API testing to check spec compliance
 
-What is uploaded to Pactflow is an OpenAPI specification that represents what you actually tested with Dredd, to give us confidence it is compatible with a Pact consumer.
+What is uploaded to PactFlow is an OpenAPI specification that represents what you actually tested with Dredd, to give us confidence it is compatible with a Pact consumer.
 
 ## Overview of Part of Bi-Directional Contract Testing Flow
 
@@ -52,7 +52,7 @@ What is uploaded to Pactflow is an OpenAPI specification that represents what yo
 
 In the following diagram, you can see how the provider testing process works.
 
-When we call "can-i-deploy" the cross-contract validation process kicks off on Pactflow, to ensure any consumer consumes a valid subset of the OAS for the provider.
+When we call "can-i-deploy" the cross-contract validation process kicks off on PactFlow, to ensure any consumer consumes a valid subset of the OAS for the provider.
 
 ![Provider Test](docs/provider-scope.png "Provider Test")
 
@@ -62,7 +62,7 @@ When you run the CI pipeline (see below for doing this), the pipeline should per
 
 - Test
   - Run tests to check spec compliance with openAPI spec
-  - Publish provider contract (openAPI spec + results) to Pactflow
+  - Publish provider contract (openAPI spec + results) to PactFlow
   - Check if we are safe to deploy to Production with `can-i-deploy` (ie. has the cross-contract validation has been successfully performed)
 - Deploy (only from master)
   - Deploy app to Production
@@ -95,7 +95,7 @@ See [Environment variables](#environment-variables) on how to set these up
 
 To be able to run some of the commands locally, you will need to export the following environment variables into your shell:
 
-- `PACT_BROKER_TOKEN`: a valid [API token](https://docs.pactflow.io/docs/getting-started/#configuring-your-api-token) for Pactflow
+- `PACT_BROKER_TOKEN`: a valid [API token](https://docs.pactflow.io/docs/getting-started/#configuring-your-api-token) for PactFlow
 - `PACT_BROKER_BASE_URL`: a fully qualified domain name with protocol to your pact broker e.g. https://testdemo.pactflow.io
 
 <!-- CONSUMER env vars -->
@@ -134,7 +134,7 @@ These will be the same commands that are used in the makefile with a few manual 
     $env:BRANCH="main"
    ```
 
-1. Now that the Swagger doc is generated and verified the contract can be published to Pactflow. The easiest way to do this via windows is using our standalone tools. See [here](https://docs.pactflow.io/docs/bi-directional-contract-testing/contracts/oas#publishing-the-provider-contract--results-to-pactflow) for cross platform instructions.
+1. Now that the Swagger doc is generated and verified the contract can be published to PactFlow. The easiest way to do this via windows is using our standalone tools. See [here](https://docs.pactflow.io/docs/bi-directional-contract-testing/contracts/oas#publishing-the-provider-contract--results-to-pactflow) for cross platform instructions.
 
 1. Check can-i-deploy to see if your provider is compatible with your pact.
 

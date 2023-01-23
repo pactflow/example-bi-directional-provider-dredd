@@ -1,4 +1,4 @@
-name: Test & Upload to Pactflow
+name: Test & Upload to PactFlow
 
 on:
   push:
