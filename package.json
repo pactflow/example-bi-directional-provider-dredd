@@ -17,11 +17,11 @@
     "express": "^5.0.1"
   },
   "devDependencies": {
-    "@pact-foundation/pact-cli": "^16.0.1",
-    "axios": "^1.7.7",
-    "concurrently": "^9.0.1",
-    "dotenv": "^16.4.5",
-    "dredd": "^14.1.0"
+    "@pact-foundation/pact-cli": "16.0.1",
+    "axios": "1.7.7",
+    "concurrently": "9.0.1",
+    "dotenv": "16.4.5",
+    "dredd": "14.1.0"
   },
   "license": "ISC"
 }
