@@ -17,7 +17,7 @@
     "express": "^5.0.1"
   },
   "devDependencies": {
-    "@pact-foundation/pact-cli": "16.0.5",
+    "@pact-foundation/pact-cli": "16.0.6",
     "axios": "1.8.1",
     "concurrently": "9.1.2",
     "dotenv": "16.4.7",
