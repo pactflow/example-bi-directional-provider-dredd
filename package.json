@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@pact-foundation/pact-cli": "16.0.6",
-    "axios": "1.8.1",
+    "axios": "1.8.2",
     "concurrently": "9.1.2",
     "dotenv": "16.4.7",
     "dredd": "14.1.0"
