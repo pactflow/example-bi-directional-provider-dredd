@@ -20,7 +20,7 @@
     "@pact-foundation/pact-cli": "16.1.5",
     "axios": "1.13.5",
     "concurrently": "9.2.1",
-    "dotenv": "16.6.1",
+    "dotenv": "17.3.1",
     "dredd": "14.1.0"
   },
   "license": "ISC"
