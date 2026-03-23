@@ -1,5 +1,9 @@
 # Example NodeJS Provider - Dredd
 
+__Note: This repository is now archived, due to [dredd](https://github.com/apiaryio/dredd) being archived.__ 
+
+__We recommend checking out our spec-first API testing tool, Drift, in the same format example repo https://github.com/pactflow/example-bi-directional-provider-drift__
+
 <!-- Build Badge -->
 
 [![Build Status](https://github.com/pactflow/example-bi-directional-provider-dredd/actions/workflows/build.yml/badge.svg)](https://github.com/pactflow/example-bi-directional-provider-dredd/actions)
